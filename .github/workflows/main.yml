@@ -16,11 +16,11 @@ jobs:
       - uses: actions/checkout@v2
       
       # Creates directory
-      - name: Create troop6059 dir
+      - name: Create meme-site dir
         run: |
-          mkdir troop6059
+          mkdir meme-site
           shopt -s extglob
-          mv !(troop6059) troop6059
+          mv !(meme-site) meme-site
     
       # Clones Firebase Deploy Info
       - name: Clone Juler-Hosting
@@ -40,4 +40,4 @@ jobs:
           firebase use juler-sites --token ${{ secrets.FIREBASE_TOKEN }}
       # Deploys Firebase
       - name: Deploy to Firebase
-        run: firebase deploy --only hosting:troop6059 --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}
+        run: firebase deploy --only hosting:memesite --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}
