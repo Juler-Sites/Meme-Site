@@ -13,13 +13,26 @@
             background-size: cover;
             background-color: blueviolet;
         }
+        
+        div.twitch-embed {
+            position: fixed;
+            bottom: 0;
+            right: 1px;
+            width: 300;
+            height: 500px;
+        }
+        
+        .heading {
+            text-align: center;
+        }
     </style>
 </head>
+
 <body>
     <div class="w3-bar w3-blue">
         <a href="#" class="w3-bar-item w3-button w3-mobile w3-green">Home</a>
-        <a href="" class="w3-bar-item w3-button w3-mobile">Our Discord Server</a>
-        <a href="" class="w3-bar-item w3-button w3-mobile">Partner Discord Server</a>
+        <a href="https://discord.gg/invite/vyBZMrcejV" class="w3-bar-item w3-button w3-mobile">Our Discord Server</a>
+        <a href="https://discord.gg/invite/rjyCFvRjdG" class="w3-bar-item w3-button w3-mobile">Partner Discord Server</a>
         <div class="w3-dropdown-hover w3-mobile">
             <button class="w3-button">Hover for a suprise <i class="fa fa-caret-down"></i></button>
             <div class="w3-dropdown-content w3-bar-block w3-theme-blue">
@@ -29,22 +42,21 @@
             </div>
         </div>
     </div>
-    <a href="#" class="w3-bar-item w3-button w3-mobile">Click Me Too</a>
-    <a href="#" class="w3-bar-item w3-button w3-mobile">Click Here</a>
 
+    <div id="twitch-embed">
+        <!-- Add a placeholder for the Twitch embed -->
 
-    <!-- Add a placeholder for the Twitch embed -->
-    <div id="twitch-embed"></div>
-    <!-- Load the Twitch embed script -->
-    <script src="https://player.twitch.tv/js/embed/v1.js"></script>
-    <!-- Create a Twitch.Player object. This will render within the placeholder div -->
-    <script type="text/javascript">
-        new Twitch.Player("twitch-embed", {
-                channel: "meme_games746"
-            }
+        <!-- Load the Twitch embed script -->
+        <script src="https://player.twitch.tv/js/embed/v1.js"></script>
+        <!-- Create a Twitch.Player object. This will render within the placeholder div -->
+        <script type="text/javascript">
+            new Twitch.Player("twitch-embed", {
+                    channel: "meme_games746"
+                }
 
-        );
-    </script>
+            );
+        </script>
+    </div>
     <!--
     <h2>Temporary Auto Reload Enabled </h2>
     <script type="text/javascript"> 
@@ -56,9 +68,12 @@
     </script>
     -->
 
-    <!-- * insert Iframe for chat here * -->
 
     <h1> Welcome &#x1F60D; !</h1>
-    <p> I'm glad you visited my site! I am also glad you watched my stream! </p>
+    <p>I play many games! If you have any games you'd like me to play just tell me! </p>
+
+    <!-- * insert Iframe for chat here * -->
+
 </body>
+
 </html>
