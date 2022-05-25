@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<meta name="viewport" content="width=1900, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<!--- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css"> --->
+<div class="w3-bar w3-blue">
+    <a href="#" class="w3-bar-item w3-button w3-mobile w3-green">Home</a>
+    <a href="#" class="w3-bar-item w3-button w3-mobile">Link 1</a>
+    <a href="#" class="w3-bar-item w3-button w3-mobile">Link 2</a>
+    <div class="w3-dropdown-hover w3-mobile">
+        <button class="w3-button">Dropdown <i class="fa fa-caret-down"></i></button>
+        <div class="w3-dropdown-content w3-bar-block w3-theme-blue">
+            <a href="#" class="w3-bar-item w3-button w3-mobile">Link 1</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile">Link 2</a>
+            <a href="#" class="w3-bar-item w3-button w3-mobile">Link 3</a>
+        </div>
+    </div>
+</div>
+
+<head>
+
+</head>
+<style>
+    div.widget {
+        position: fixed;
+        bottom: 0;
+        right: 1px;
+        width: 300;
+        height: 500px;
+    }
+    
+    body {
+        font-family: "Lato", sans-serif;
+        transition: background-color .5s;
+    }
+</style>
+
+<body>
+    <!--
+    
+    <div id="twitch-embed"></div>
+    <script src="https://player.twitch.tv/js/embed/v1.js"></script>
+    <script type="text/javascript">
+        new Twitch.Player("twitch-embed", {
+                channel: "meme_games746"
+            }
+
+        );
+    </script> -->
+    <!-- The above script creates and embeds a player object (video player to be precise if you're reading this, meme), It does not however, Provide the chat. I was thinking maybe we could integrate your twitch with the server I just made for you today. Or we could re use my server or just use the twitch chat. -->
+
+
+
+    <!--- As the below header says, this a temporary auto refresh script. It refreshes the page after 25 seconds. -->
+
+    <h2>Temporary Auto Reload Enabled </h2>
+    <script type="text/javascript">
+        setTimeout(function() {
+                location.reload();
+            }
+
+            , 25000);
+    </script>
+
+    <p>* insert Iframe for chat here *</p>
+
+
+
+</body>
+<div class=widget>
+    <iframe src="https://discord.com/widget?id=978657334773579807&amp;theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+</div>
