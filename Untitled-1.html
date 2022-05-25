@@ -1,8 +1,12 @@
 <!DOCTYPE html>
 
-<meta name="viewport" content="width=1900, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<!--- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css"> --->
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=1" />
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!--- <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css"> --->
+</head>
+
 <div class="w3-bar w3-blue">
     <a href="#" class="w3-bar-item w3-button w3-mobile w3-green">Home</a>
     <a href="#" class="w3-bar-item w3-button w3-mobile">Link 1</a>
@@ -17,42 +21,19 @@
     </div>
 </div>
 
-<head>
-
-</head>
 <style>
-    div.widget {
-        position: fixed;
-        bottom: 0;
-        right: 1px;
-        width: 300;
-        height: 500px;
-    }
-    
-    body {
-        font-family: "Lato", sans-serif;
-        transition: background-color .5s;
-    }
+
 </style>
 
 <body>
-    <!--
-    
+    <!-- Add a placeholder for the Twitch embed -->
     <div id="twitch-embed"></div>
-    <script src="https://player.twitch.tv/js/embed/v1.js"></script>
-    <script type="text/javascript">
-        new Twitch.Player("twitch-embed", {
-                channel: "meme_games746"
-            }
-
-        );
-    </script> -->
-    <!-- The above script creates and embeds a player object (video player to be precise if you're reading this, meme), It does not however, Provide the chat. I was thinking maybe we could integrate your twitch with the server I just made for you today. Or we could re use my server or just use the twitch chat. -->
-
-
-
-    <!--- As the below header says, this a temporary auto refresh script. It refreshes the page after 25 seconds. -->
-
+    <!-- Load the Twitch embed script -->
+    <script src="https://player.twitch.tv/js"></script>
+    <!-- Create a Twitch.Player object. This will render within the placeholder div -->
+    <script type="t">
+        new Twitch.Player("twitch-embed", { channel: "meme_games746" } );
+    </script>
     <h2>Temporary Auto Reload Enabled </h2>
     <script type="text/javascript">
         setTimeout(function() {
@@ -61,12 +42,5 @@
 
             , 25000);
     </script>
-
-    <p>* insert Iframe for chat here *</p>
-
-
-
+    <!-- * insert Iframe for chat here * -->
 </body>
-<div class=widget>
-    <iframe src="https://discord.com/widget?id=978657334773579807&amp;theme=dark" width="350" height="500" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-</div>
