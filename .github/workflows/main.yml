@@ -1,0 +1,43 @@
+name: Firebase Deploy
+
+on:
+  push:
+    branches: [ release/production ]
+  pull_request:
+    branches: [ release/production ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Clones this repo
+      - uses: actions/checkout@v2
+      
+      # Creates directory
+      - name: Create troop6059 dir
+        run: |
+          mkdir troop6059
+          shopt -s extglob
+          mv !(troop6059) troop6059
+    
+      # Clones Firebase Deploy Info
+      - name: Clone Juler-Hosting
+        run: |
+          git clone ${{ secrets.HOSTING_REPO }} host
+          cp ./host/.firebaserc .
+          cp ./host/firebase.json .
+          rm -rf host
+      
+      # Installs Firebase
+      - name: Install Firebase
+        run: npm install -g firebase-tools
+        
+      # Access Firebase
+      - name: Access Firebase
+        run: |
+          firebase use juler-sites --token ${{ secrets.FIREBASE_TOKEN }}
+      # Deploys Firebase
+      - name: Deploy to Firebase
+        run: firebase deploy --only hosting:troop6059 --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}
