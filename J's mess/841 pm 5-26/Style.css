@@ -1,0 +1,26 @@
+body {
+    background-image: url('bg.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: blueviolet;
+}
+
+div.twitch-embed {
+    transform: translateX(500px), translateY(900px)
+}
+
+div.heading {
+    transform: translateX(100px), translateY(100px);
+    text-align: center;
+    transform-origin: center;
+}
+
+div.themememachine {
+    transform: translateX(1100px), translateY(1100px);
+    position: fixed;
+    bottom: 0;
+    right: 1px;
+    width: 300;
+    height: 500px;
+}
