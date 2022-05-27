@@ -19,6 +19,7 @@
             parent: ["embed.example.com", "othersite.example.com"]
         });
 
+
         embed.addEventListener(Twitch.Embed.VIDEO_READY, () => {
             var player = embed.getPlayer();
             player.play();
