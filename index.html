@@ -31,9 +31,9 @@
         <div class="w3-dropdown-content w3-bar-block w3-theme-blue">
           <a href="https://youtu.be/2ocykBzWDiM"
             class="w3-bar-item w3-button w3-mobile"
-            >Click Me ;)</a>
-        <!-- <a href="#" class="w3-bar-item w3-button w3-mobile">Click Me Too</a>
-        <a href="#" class="w3-bar-item w3-button w3-mobile">CLick Here</a> -->
+            >Click Here </a>
+        <a href="https://www.twitch.tv/meme_games746" class="w3-bar-item w3-button w3-mobile">My Twitch Channel</a>
+        <!-- <a href="#" class="w3-bar-item w3-button w3-mobile">CLick Here</a> -->-->
     </div>
     </div>
     </div>
@@ -63,12 +63,19 @@
 
     <!-- <p1>If you would like to contact me when im not online, Please use the "contact me" form located under the contact section.</p1> -->
 
-    <div container>
-        <div id="twitch-stream">
-            <iframe src="https://player.twitch.tv/?channel=meme_games746&parent=www.memestreams.ga" frameborder="0" allowfullscreen="true" scrolling="no" height="378" width="620"></iframe> Be sure to fill in the placeholder with the site you want to embed
-            Twitch on!
-            </script>
-        </div>
+    <div id="twitch-stream"></div>
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <script type="text/javascript">
+        var options = {
+            width: 720,
+            height: 1280,
+            channel: "meme_games746",
+            allowfullscreen: true,
+            layout: "video-with-chat",
+            muted: false
+        };
+        var player = new Twitch.Embed("twitch-stream", options);
+    </script>
 
     </div>
 
