@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <div id="twitch-stream"></div>
+    <script src="https://embed.twitch.tv/embed/v1.js"></script>
+    <script type="text/javascript">
+        var options = {
+            width: 720,
+            height: 1280,
+            channel: "meme_games746",
+            allowfullscreen: true,
+            layout: "video-with-chat",
+            muted: false
+        };
+        var player = new Twitch.Embed("twitch-stream", options);
+    </script>
+
+
+
+
+</body>
+
+</html>
