@@ -9,7 +9,7 @@ body {
 }
 
 div.twitch-stream {
-    transform: translateX(500px), translateY(900px);
+    transform: translateX(500px), translateY(600px);
     transform-origin: safe center;
 }
 
