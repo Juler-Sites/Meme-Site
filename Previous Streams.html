@@ -18,23 +18,20 @@
 
 <body>
 
-    <!-- Add a placeholder for the Twitch embed -->
-    <div id="twitch-embed"></div>
-
-    <!-- Load the Twitch embed script -->
     <script src="https://player.twitch.tv/js/embed/v1.js"></script>
-
-    <!-- Create a Twitch.Player object. This will render within the placeholder div -->
+    <div id="<laststream>"></div>
     <script type="text/javascript">
-        new Twitch.Player("twitch-embed", {
-            video: "1495975551"
+        var options = {
+            width: 720,
+            height: 1280,
+            channel: "meme_games746",
+            video: "1495975551",
 
-        });
+
+        };
+        var player = new Twitch.Player("<laststream>", options);
+        player.setVolume(0.5);
     </script>
-
-
-
-
 
 </body>
 
