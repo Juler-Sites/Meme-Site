@@ -9,8 +9,10 @@ body {
 }
 
 div.twitch-embed {
-    transform: translateX(1500px), translateY(6010px);
+    transform: translateX(500px), translateY(601px);
     transform-origin: safe center;
+    width: 1300;
+    height: 1500px;
 }
 
 div.Twitch.Player {
