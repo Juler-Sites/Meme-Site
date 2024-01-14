@@ -8,9 +8,16 @@ body {
     color: mediumseagreen
 }
 
-div.twitch-stream {
-    transform: translateX(500px), translateY(600px);
+div.twitch-embed {
+    transform: translateX(500px), translateY(601px);
     transform-origin: safe center;
+    width: 1300;
+    height: 1500px;
+}
+
+div.Twitch.Player {
+    width: 1300;
+    height: 1500px;
 }
 
 div.heading {
