@@ -3,8 +3,6 @@ name: Firebase Deploy
 on:
   push:
     branches: [ release/production ]
-  pull_request:
-    branches: [ release/production ]
   workflow_dispatch:
 
 jobs:
@@ -29,15 +27,17 @@ jobs:
           cp ./host/.firebaserc .
           cp ./host/firebase.json .
           rm -rf host
-      
+
       # Installs Firebase
       - name: Install Firebase
         run: npm install -g firebase-tools
         
-      # Access Firebase
-      - name: Access Firebase
+      # Authenticates and then Deploys
+      - name: Authenticate with Firebase
         run: |
-          firebase use juler-sites --token ${{ secrets.FIREBASE_TOKEN }}
-      # Deploys Firebase
-      - name: Deploy to Firebase
-        run: firebase deploy --only hosting:memesite --non-interactive --token ${{ secrets.FIREBASE_TOKEN }}
+          echo "$FIREBASE_SA_KEY" > service-account-key.json
+          export GOOGLE_APPLICATION_CREDENTIALS=$(pwd)/service-account-key.json
+          firebase use juler-sites
+          firebase deploy --only hosting:memesite --non-interactive
+        env:
+          FIREBASE_SA_KEY: ${{ secrets.FIREBASE_SA_KEY }}
