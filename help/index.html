@@ -1,370 +1,95 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Memegames Help — remote PC tech support from Julian in Little Rock. Windows, printers, Wi-Fi, Discord bots, Drive sync, cleanup. Pay Cash App $lightsnipe, connect via Chrome Remote Desktop or Parsec.">
   <title>Memegames Help — Remote PC Support</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Remote PC help from Julian. Windows, printers, Wi-Fi, Discord bots, Drive sync. Cash App $lightsnipe." />
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css" />
+  <link rel="stylesheet" href="/Style.css" />
+  <link rel="icon" type="image/x-icon" href="https://static-cdn.jtvnw.net/jtv_user_pictures/e8edde98-0f7e-4409-bbc2-cb0486f4799a-profile_image-70x70.png" />
   <style>
-    :root {
-      --bg: #0f1419;
-      --surface: #1a222c;
-      --surface2: #232d3a;
-      --border: #2e3a4a;
-      --text: #e8eef4;
-      --muted: #9aabbc;
-      --accent: #3d9cf0;
-      --accent-dim: #2a6fad;
-      --ok: #3ecf8e;
-      --warn: #e6b84d;
-      --radius: 10px;
-      --max: 720px;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.55;
-      font-size: 1rem;
-    }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 1.25rem 3rem; }
-    header {
-      padding: 2.5rem 0 1.75rem;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 2rem;
-    }
-    .brand {
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.5rem;
-    }
-    h1 {
-      font-size: clamp(1.6rem, 4vw, 2.1rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.6rem;
-    }
-    .tagline { color: var(--muted); font-size: 1.05rem; max-width: 36em; }
-    .badge-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.1rem; }
-    .badge {
-      background: var(--surface2);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 0.78rem;
-      padding: 0.28rem 0.65rem;
-      border-radius: 999px;
-    }
-    section { margin-bottom: 2.5rem; }
-    h2 {
-      font-size: 1.2rem;
-      font-weight: 650;
-      margin-bottom: 0.9rem;
-      padding-bottom: 0.4rem;
-      border-bottom: 1px solid var(--border);
-    }
-    h3 { font-size: 1rem; font-weight: 600; margin: 1rem 0 0.35rem; }
-    p, li { color: var(--text); }
-    .muted { color: var(--muted); }
-    .grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.75rem;
-    }
-    @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
-    .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1rem 1.1rem;
-    }
-    .card strong { display: block; margin-bottom: 0.25rem; }
-    .card p { color: var(--muted); font-size: 0.92rem; }
-    .rates { display: grid; gap: 0.75rem; }
-    .rate {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 1rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1rem 1.15rem;
-    }
-    .rate .price {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--ok);
-      white-space: nowrap;
-    }
-    .rate .label { font-weight: 600; }
-    .rate .desc { color: var(--muted); font-size: 0.88rem; margin-top: 0.15rem; }
-    ol.steps { list-style: none; counter-reset: step; }
-    ol.steps li {
-      counter-increment: step;
-      position: relative;
-      padding: 0.85rem 0 0.85rem 3rem;
-      border-bottom: 1px solid var(--border);
-    }
-    ol.steps li:last-child { border-bottom: none; }
-    ol.steps li::before {
-      content: counter(step);
-      position: absolute;
-      left: 0;
-      top: 0.85rem;
-      width: 2rem;
-      height: 2rem;
-      border-radius: 50%;
-      background: var(--surface2);
-      border: 1px solid var(--accent-dim);
-      color: var(--accent);
-      font-weight: 700;
-      font-size: 0.9rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    details {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      margin-bottom: 0.5rem;
-      padding: 0.85rem 1rem;
-    }
-    summary {
-      cursor: pointer;
-      font-weight: 600;
-      list-style: none;
-    }
-    summary::-webkit-details-marker { display: none; }
-    summary::before {
-      content: "+";
-      display: inline-block;
-      width: 1.2em;
-      color: var(--accent);
-      font-weight: 700;
-    }
-    details[open] summary::before { content: "−"; }
-    details p { margin-top: 0.55rem; color: var(--muted); font-size: 0.95rem; }
-    .contact-box {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.25rem 1.35rem;
-    }
-    .contact-box dl {
-      display: grid;
-      grid-template-columns: 7.5rem 1fr;
-      gap: 0.55rem 0.75rem;
-      font-size: 0.98rem;
-    }
-    .contact-box dt { color: var(--muted); }
-    .contact-box dd { word-break: break-word; }
-    .cta {
-      display: inline-block;
-      margin-top: 1.1rem;
-      background: var(--accent);
-      color: #041018;
-      font-weight: 700;
-      padding: 0.7rem 1.25rem;
-      border-radius: 8px;
-      text-decoration: none;
-    }
-    .cta:hover { background: #5aadf5; text-decoration: none; }
-    .note {
-      margin-top: 1rem;
-      font-size: 0.88rem;
-      color: var(--muted);
-      border-left: 3px solid var(--warn);
-      padding-left: 0.75rem;
-    }
-    footer {
-      margin-top: 2rem;
-      padding-top: 1.25rem;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 0.82rem;
-    }
-    nav.toc {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.65rem 1.1rem;
-      margin: 1.25rem 0 0;
-      font-size: 0.9rem;
-    }
+    body { max-width: 800px; margin: 0 auto; padding-bottom: 2rem; }
+    .price { font-size: 1.4rem; font-weight: bold; color: #0a7; }
+    .box { background: #f1f1f1; padding: 12px 16px; margin: 10px 0; border-left: 4px solid #2196F3; }
+    h2 { margin-top: 1.5rem; }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <div class="brand">memegames.net / help</div>
-      <h1>Remote PC Help</h1>
-      <p class="tagline">
-        Hands-on remote tech support from Julian (Little Rock, AR).
-        You stay home. I fix it over Chrome Remote Desktop or Parsec — no drive-outs.
-      </p>
-      <div class="badge-row">
-        <span class="badge">Windows</span>
-        <span class="badge">Remote only</span>
-        <span class="badge">Cash App</span>
-        <span class="badge">CRD &amp; Parsec</span>
-      </div>
-      <nav class="toc" aria-label="On this page">
-        <a href="#fix">What I fix</a>
-        <a href="#rates">Rates</a>
-        <a href="#how">How it works</a>
-        <a href="#faq">FAQ</a>
-        <a href="#contact">Book / contact</a>
-      </nav>
-    </header>
 
-    <section id="fix">
-      <h2>What I fix</h2>
-      <div class="grid">
-        <div class="card">
-          <strong>Windows troubleshooting</strong>
-          <p>Boot issues, updates stuck, drivers, weird errors, slowdowns.</p>
-        </div>
-        <div class="card">
-          <strong>Printers</strong>
-          <p>Won’t print, wrong driver, wireless setup, queue stuck.</p>
-        </div>
-        <div class="card">
-          <strong>Wi-Fi &amp; network</strong>
-          <p>Can’t connect, weak signal tips, basic router/PC network fixes.</p>
-        </div>
-        <div class="card">
-          <strong>Discord bots</strong>
-          <p>Bot setup, permissions, basic hosting/config help.</p>
-        </div>
-        <div class="card">
-          <strong>Google Drive sync</strong>
-          <p>Drive for desktop stuck, missing files, sync conflicts.</p>
-        </div>
-        <div class="card">
-          <strong>PC cleanup</strong>
-          <p>Startup bloat, junk software, storage reclaim, basic hardening.</p>
-        </div>
-      </div>
-      <p class="muted" style="margin-top:0.9rem;font-size:0.9rem;">
-        Remote only — I do not visit in person. Hardware that needs a screwdriver (RAM, drives, soldering) is out of scope unless we diagnose remotely and you handle the parts.
-      </p>
-    </section>
+<div class="w3-bar w3-blue">
+  <a href="/" class="w3-bar-item w3-button w3-mobile">Home</a>
+  <a href="/help/" class="w3-bar-item w3-button w3-mobile w3-green">Remote Help</a>
+  <a href="https://discord.gg/za5Jxb73zG" class="w3-bar-item w3-button w3-mobile">Discord</a>
+  <a href="https://www.twitch.tv/inkymunchie" class="w3-bar-item w3-button w3-mobile">Twitch</a>
+</div>
 
-    <section id="rates">
-      <h2>Rates</h2>
-      <div class="rates">
-        <div class="rate">
-          <div>
-            <div class="label">Half hour</div>
-            <div class="desc">Most single issues. Clock starts when remote session connects.</div>
-          </div>
-          <div class="price">$40</div>
-        </div>
-        <div class="rate">
-          <div>
-            <div class="label">Full hour</div>
-            <div class="desc">Bigger messes, multi-problem sessions, deeper cleanup.</div>
-          </div>
-          <div class="price">$70</div>
-        </div>
-        <div class="rate">
-          <div>
-            <div class="label">Quick-fix (fixed)</div>
-            <div class="desc">One small remote fix — agreed in advance (e.g. “make printer print again”).</div>
-          </div>
-          <div class="price">$25</div>
-        </div>
-      </div>
-      <p class="note">
-        Pay before the session via Cash App. Payment note must say <strong>REMOTE HELP</strong>.
-        Tips welcome after if it went well.
-      </p>
-    </section>
+<div class="w3-container w3-padding">
+  <h1>Remote PC Help</h1>
+  <p>Hey — I'm Julian. I do remote tech support from Little Rock. You stay home, we connect with Chrome Remote Desktop or Parsec, and I dig through the Windows mess with you.</p>
+  <p>No house calls. Cash App only.</p>
 
-    <section id="how">
-      <h2>How it works</h2>
-      <ol class="steps">
-        <li>
-          <strong>Pay</strong><br>
-          Send the rate via <a href="https://cash.app/$lightsnipe">Cash App (<code>$lightsnipe</code>)</a>.
-          Put <strong>REMOTE HELP</strong> in the note, plus a one-line description of the problem.
-        </li>
-        <li>
-          <strong>Schedule</strong><br>
-          Text or email me. Prefer text/email for new clients (phone has call screening).
-          I’ll confirm payment and pick a time that works for both of us.
-        </li>
-        <li>
-          <strong>Connect</strong><br>
-          I’ll send a Chrome Remote Desktop code or a Parsec invite. You approve the connection on your PC.
-        </li>
-        <li>
-          <strong>Done</strong><br>
-          I fix what we agreed. You disconnect when we’re finished. Optional tip if you want.
-        </li>
-      </ol>
-    </section>
+  <h2>Stuff I can help with</h2>
+  <ul>
+    <li>Windows acting up (updates stuck, drivers, slow PC, weird errors)</li>
+    <li>Printers that won't print</li>
+    <li>Wi-Fi / basic network headaches</li>
+    <li>Discord bots (setup, permissions, simple config)</li>
+    <li>Google Drive sync weirdness</li>
+    <li>Cleanup — startup junk, bloat, freeing space</li>
+  </ul>
+  <p>If it needs a screwdriver (RAM, drives, soldering), I can help figure out <i>what</i> to buy, but you'd do the install.</p>
 
-    <section id="faq">
-      <h2>FAQ</h2>
-      <details>
-        <summary>Is this safe?</summary>
-        <p>You control the remote session. Use Chrome Remote Desktop or Parsec — tools you choose and can end anytime. Don’t share passwords in chat; type them yourself on your machine if needed. I won’t ask for banking logins.</p>
-      </details>
-      <details>
-        <summary>Do you come to my house?</summary>
-        <p>No. This service is remote only. That keeps cost down and scheduling simple.</p>
-      </details>
-      <details>
-        <summary>What if you can’t fix it?</summary>
-        <p>If I can’t make meaningful progress in the paid window, I’ll say so plainly. For a quick-fix ($25), if we agreed on a specific outcome and it isn’t reachable remotely, we’ll talk options (refund of that fee or convert to a timed session) before continuing.</p>
-      </details>
-      <details>
-        <summary>Mac / phone / console?</summary>
-        <p>Primary focus is Windows PCs. Light Mac help case-by-case. Phones and game consoles are usually out of scope for this page.</p>
-      </details>
-      <details>
-        <summary>Where are you based?</summary>
-        <p>Little Rock, Arkansas. Service is remote nationwide where CRD/Parsec works.</p>
-      </details>
-      <details>
-        <summary>Business name?</summary>
-        <p>This is <strong>Memegames Help</strong> — Julian’s remote IT under memegames.net. Not affiliated with Dorcy Services LLC.</p>
-      </details>
-    </section>
-
-    <section id="contact">
-      <h2>Book / contact</h2>
-      <div class="contact-box">
-        <dl>
-          <dt>Email</dt>
-          <dd><a href="mailto:julerobb1@gmail.com?subject=REMOTE%20HELP%20booking">julerobb1@gmail.com</a></dd>
-          <dt>Text</dt>
-          <dd><a href="sms:5012403205">501-240-3205</a> <span class="muted">(prefer text; calls may go to screening)</span></dd>
-          <dt>Cash App</dt>
-          <dd><a href="https://cash.app/$lightsnipe"><code>$lightsnipe</code></a></dd>
-          <dt>Payment note</dt>
-          <dd><strong>REMOTE HELP</strong> + short problem description</dd>
-          <dt>Remote tools</dt>
-          <dd>Chrome Remote Desktop or Parsec</dd>
-        </dl>
-        <a class="cta" href="mailto:julerobb1@gmail.com?subject=REMOTE%20HELP%20booking&body=Hi%20Julian%2C%0A%0AI%20need%20remote%20help%20with%3A%20%0APreferred%20time%3A%20%0APayment%20sent%20via%20Cash%20App%20%24lightsnipe%3A%20%0A">Email to book</a>
-        <p class="note">
-          New clients: text or email first. Include what broke, your OS (e.g. Windows 11), and when you’re free.
-        </p>
-      </div>
-    </section>
-
-    <footer>
-      <p>Memegames Help · <a href="https://memegames.net">memegames.net</a> · Julian · Little Rock, AR</p>
-      <p style="margin-top:0.35rem;">Remote PC support · Not Dorcy Services LLC</p>
-    </footer>
+  <h2>Prices</h2>
+  <div class="box">
+    <div><b>Quick fix</b> — one small thing we agree on first</div>
+    <div class="price">$25</div>
   </div>
+  <div class="box">
+    <div><b>Half hour</b> — most single problems. Clock starts when we connect.</div>
+    <div class="price">$40</div>
+  </div>
+  <div class="box">
+    <div><b>Full hour</b> — bigger messes / a few things at once</div>
+    <div class="price">$70</div>
+  </div>
+  <p>Pay <b>before</b> we start on Cash App <a href="https://cash.app/$lightsnipe"><code>$lightsnipe</code></a>. Put <b>REMOTE HELP</b> in the note so I know what it's for. Tips after are optional and appreciated.</p>
+
+  <h2>How it works</h2>
+  <ol>
+    <li><b>Pay</b> — Cash App <a href="https://cash.app/$lightsnipe">$lightsnipe</a>, note: REMOTE HELP + what broke</li>
+    <li><b>Hit me up</b> — text or email (new people: please don't cold-call, my phone screens)</li>
+    <li><b>Connect</b> — I'll send a Chrome Remote Desktop code or Parsec invite; you click yes on your PC</li>
+    <li><b>Done</b> — I fix what we said we'd fix, you disconnect</li>
+  </ol>
+
+  <h2>Quick FAQ</h2>
+  <p><b>Is this safe?</b><br>
+  You control the session. CRD or Parsec — you can kick me anytime. Don't paste passwords in chat; type them yourself if needed. I won't ask for bank logins.</p>
+
+  <p><b>Do you come over?</b><br>
+  Nope. Remote only. Keeps it cheap and simple.</p>
+
+  <p><b>What if you can't fix it?</b><br>
+  I'll tell you straight. For a $25 quick-fix, if the thing we agreed on can't be done remotely, we'll talk refund or switch to timed before I keep going.</p>
+
+  <p><b>Mac / phone / console?</b><br>
+  Windows is the main thing. Light Mac help maybe. Phones and consoles usually no.</p>
+
+  <p><b>Who is this?</b><br>
+  Memegames Help — Julian's remote IT side under memegames.net. Not Dorcy Services LLC.</p>
+
+  <h2>Book</h2>
+  <div class="box">
+    <p><b>Email:</b> <a href="mailto:julerobb1@gmail.com?subject=REMOTE%20HELP%20booking">julerobb1@gmail.com</a></p>
+    <p><b>Text:</b> <a href="sms:5012403205">501-240-3205</a> (text first)</p>
+    <p><b>Cash App:</b> <a href="https://cash.app/$lightsnipe">$lightsnipe</a></p>
+  </div>
+  <p>Tell me what broke, Windows 10 or 11, and when you're free.</p>
+
+  <hr>
+  <p class="w3-small">Memegames Help · <a href="/">memegames.net</a> · Julian · Little Rock, AR · Remote only</p>
+</div>
+
 </body>
 </html>
