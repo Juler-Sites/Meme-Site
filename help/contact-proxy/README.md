@@ -1,6 +1,6 @@
 # Contact proxy (DIY)
 
-Keeps `julerobb1@gmail.com` off memegames.net HTML so scrapers/indexers don’t harvest it.
+Keeps the real inbox off memegames.net HTML so scrapers/indexers don’t harvest it.
 
 ## What it does
 
@@ -10,7 +10,7 @@ Static Help form → this Google Apps Script Web App → your Gmail.
 
 1. Open [script.google.com](https://script.google.com) signed into the inbox that should receive bookings.
 2. New project → paste `Code.gs`.
-3. Optional: Project Settings → Script properties → `FORWARD_TO` = your real address (otherwise uses the default in the file — change it before deploy if needed).
+3. **Required:** Project Settings → Script properties → add `FORWARD_TO` = your real inbox (do not put that address in the repo).
 4. Deploy → New deployment → type **Web app**
    - Execute as: **Me**
    - Who has access: **Anyone**

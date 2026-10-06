@@ -7,7 +7,8 @@
  *
  * Optional: set FORWARD_TO in Script Properties instead of hardcoding.
  */
-var FORWARD_TO_DEFAULT = 'julerobb1@gmail.com';
+// Set Script property FORWARD_TO to your real inbox (never commit the address).
+var FORWARD_TO_DEFAULT = '';
 
 function doPost(e) {
   try {
@@ -34,6 +35,9 @@ function doPost(e) {
     }
 
     var to = PropertiesService.getScriptProperties().getProperty('FORWARD_TO') || FORWARD_TO_DEFAULT;
+    if (!to) {
+      return json_({ ok: false, error: 'FORWARD_TO not configured' });
+    }
     var body =
       'Memegames Help booking (via contact proxy)\n\n' +
       'Name: ' + name + '\n' +
