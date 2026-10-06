@@ -14,36 +14,53 @@
     <link rel="icon" type="image/x-icon" href="https://static-cdn.jtvnw.net/jtv_user_pictures/e8edde98-0f7e-4409-bbc2-cb0486f4799a-profile_image-70x70.png" />
 </head>
 <body>
-    <div class="w3-bar w3-blue">
-        <a href="/" class="w3-bar-item w3-button w3-mobile w3-green">Home</a>
-        <a href="/help/" class="w3-bar-item w3-button w3-mobile">Remote Help</a>
-        <a href="https://discord.gg/za5Jxb73zG" class="w3-bar-item w3-button w3-mobile">Discord</a>
-        <a href="https://www.twitch.tv/inkymunchie" class="w3-bar-item w3-button w3-mobile">Twitch</a>
-        <a href="https://www.youtube.com/@inkymunchie" class="w3-bar-item w3-button w3-mobile">YouTube</a>
-        <a href="https://www.tiktok.com/@inkymunchiettv" class="w3-bar-item w3-button w3-mobile">TikTok</a>
-    </div>
 
-    <div>
-        <h1>Welcome &#128420;</h1>
-        <style>
-            h1 { color: #826c3f; }
-        </style>
-        <p class="p1">I play many games! If you have any games you'd like me to play just tell me!</p>
-    </div>
+<!-- Main site navbar (pink = Jessica / Memegames) -->
+<div class="w3-top">
+  <div class="w3-bar w3-pink w3-card">
+    <a href="/" class="w3-bar-item w3-button w3-mobile w3-hover-white">Home</a>
+    <a href="/help/" class="w3-bar-item w3-button w3-mobile w3-hover-white">Remote Help</a>
+    <a href="https://discord.gg/za5Jxb73zG" class="w3-bar-item w3-button w3-mobile w3-hover-white">Discord</a>
+    <a href="https://www.twitch.tv/inkymunchie" class="w3-bar-item w3-button w3-mobile w3-hover-white">Twitch</a>
+    <a href="https://www.youtube.com/@inkymunchie" class="w3-bar-item w3-button w3-mobile w3-hide-small w3-hover-white">YouTube</a>
+    <a href="https://www.tiktok.com/@inkymunchiettv" class="w3-bar-item w3-button w3-mobile w3-hide-small w3-hover-white">TikTok</a>
+    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="navToggle()">&#9776;</a>
+  </div>
+  <div id="navSmall" class="w3-bar-block w3-pink w3-hide w3-hide-large w3-hide-medium">
+    <a href="https://www.youtube.com/@inkymunchie" class="w3-bar-item w3-button" onclick="navToggle()">YouTube</a>
+    <a href="https://www.tiktok.com/@inkymunchiettv" class="w3-bar-item w3-button" onclick="navToggle()">TikTok</a>
+  </div>
+</div>
 
-    <div id="twitch-stream"></div>
-    <script src="https://embed.twitch.tv/embed/v1.js"></script>
-    <script type="text/javascript">
-        var options = {
-            width: 720,
-            height: 800,
-            channel: "inkymunchie",
-            allowfullscreen: true,
-            layout: "video-with-chat",
-            muted: false,
-            parent: ["memegames.net", "www.memegames.net"]
-        };
-        var player = new Twitch.Embed("twitch-stream", options);
-    </script>
+<div class="w3-container" style="margin-top:52px">
+    <h1>Welcome &#128420;</h1>
+    <style>
+        h1 { color: #826c3f; }
+    </style>
+    <p class="p1">I play many games! If you have any games you'd like me to play just tell me!</p>
+</div>
+
+<div id="twitch-stream" class="w3-container"></div>
+<script src="https://embed.twitch.tv/embed/v1.js"></script>
+<script type="text/javascript">
+    function navToggle() {
+      var x = document.getElementById("navSmall");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+      } else {
+        x.className = x.className.replace(" w3-show", "");
+      }
+    }
+    var options = {
+        width: 720,
+        height: 800,
+        channel: "inkymunchie",
+        allowfullscreen: true,
+        layout: "video-with-chat",
+        muted: false,
+        parent: ["memegames.net", "www.memegames.net"]
+    };
+    var player = new Twitch.Embed("twitch-stream", options);
+</script>
 </body>
 </html>
