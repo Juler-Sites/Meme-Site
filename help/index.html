@@ -114,13 +114,76 @@
     <p>
       <label><input type="checkbox" id="mailAgree" /> I read the <a href="/help/mail-in.html">mail-in terms</a> (only needed if shipping hardware)</label>
     </p>
-    <p id="mailHint" class="w3-text-grey w3-small">Check that box if you're mailing a machine — then email/text and say you agree. Shipping address comes after payment.</p>
+    <p id="mailHint" class="w3-text-grey w3-small">Check that box if you're mailing a machine — then text and say you agree. Shipping address comes after payment.</p>
   </div>
-  <p>What broke, Win 10 or 11, when you're free.</p>
+  <p>What broke, Win 10 or 11, when you're free — or use the form below.</p>
+
+  <h2>Message (no public email)</h2>
+  <div class="box">
+    <p class="w3-small w3-text-grey">Goes through our forwarder to Julian — your note isn’t posted publicly, and his Gmail isn’t on this page.</p>
+    <form id="helpContactForm">
+      <p><label>Name<br><input class="w3-input" name="name" maxlength="120" autocomplete="name"></label></p>
+      <p><label>Text-back number<br><input class="w3-input" name="phone" maxlength="40" autocomplete="tel" inputmode="tel" placeholder="501-…"></label></p>
+      <p><label>OS<br><input class="w3-input" name="os" maxlength="80" placeholder="Windows 11"></label></p>
+      <p><label>When you’re free<br><input class="w3-input" name="when" maxlength="200"></label></p>
+      <p><label>What’s broken<br><textarea class="w3-input" name="message" rows="4" maxlength="4000" required></textarea></label></p>
+      <p style="position:absolute;left:-9999px;height:0;overflow:hidden" aria-hidden="true">
+        <label>Company<input name="company" tabindex="-1" autocomplete="off"></label>
+      </p>
+      <p><button class="w3-button w3-teal" type="submit">Send</button>
+        <span id="helpContactStatus" class="w3-small w3-text-grey" style="margin-left:8px"></span></p>
+    </form>
+    <p class="w3-small w3-text-grey">Or just text <a href="sms:5012403205">501-240-3205</a> — fastest.</p>
+  </div>
 
   <hr>
   <p class="w3-small w3-text-grey">Memegames Help · solo · <a href="/">memegames.net</a> · Julian Robbins · Little Rock, AR</p>
 </div>
+
+
+<script src="/help/contact-proxy-config.js"></script>
+<script>
+(function () {
+  var form = document.getElementById('helpContactForm');
+  if (!form) return;
+  var status = document.getElementById('helpContactStatus');
+  form.addEventListener('submit', function (ev) {
+    ev.preventDefault();
+    var proxy = (window.HELP_CONTACT_PROXY || '').trim();
+    if (!proxy) {
+      status.textContent = 'Forwarder not wired yet — text 501-240-3205 for now.';
+      return;
+    }
+    var fd = new FormData(form);
+    var payload = {
+      name: fd.get('name') || '',
+      phone: fd.get('phone') || '',
+      os: fd.get('os') || '',
+      when: fd.get('when') || '',
+      message: fd.get('message') || '',
+      company: fd.get('company') || ''
+    };
+    status.textContent = 'Sending…';
+    fetch(proxy, {
+      method: 'POST',
+      mode: 'cors',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    }).then(function (r) { return r.json().catch(function () { return { ok: false }; }); })
+      .then(function (j) {
+        if (j && j.ok) {
+          status.textContent = 'Sent. Julian will text or reply.';
+          form.reset();
+        } else {
+          status.textContent = 'Didn’t go through — text 501-240-3205 instead.';
+        }
+      })
+      .catch(function () {
+        status.textContent = 'Network error — text 501-240-3205 instead.';
+      });
+  });
+})();
+</script>
 
 </body>
 </html>
