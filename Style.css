@@ -1,41 +1,55 @@
-body {
-    background-image: url('bg.png');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-color: blueviolet;
-    text-align: center;
-    color: mediumseagreen
+/* Homepage layout — banner as content image, not body cover.
+   Avoids overlapping text on art and the tall purple empty region. */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 0;
+  background: #1a1024; /* short page; no blueviolet fill stretching forever */
+  color: #f4eef8;
+  text-align: center;
+  font-family: Arial, Verdana, sans-serif;
 }
 
-div.twitch-stream {
-    transform: translateX(500px), translateY(600px);
-    transform-origin: safe center;
+.mg-banner {
+  display: block;
+  width: 100%;
+  max-width: 1199px;
+  height: auto;
+  margin: 0 auto;
+  vertical-align: middle;
 }
 
-div.heading {
-    transform: translateX(100px), translateY(100px);
-    text-align: center;
-    transform-origin: center;
-    color: darkolivegreen;
+.mg-main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 16px 16px 28px;
+  text-align: center;
 }
 
-.h1 {
-    color: darkcyan;
+.mg-tagline {
+  margin: 0 0 18px;
+  font-size: 1.1rem;
+  line-height: 1.45;
+  color: #ffb38a; /* readable coral-ish on dark, not washed over banner art */
+  font-weight: 600;
 }
 
-.p1 {
-    color: coral;
+#twitch-stream {
+  margin-top: 8px;
+  padding: 0;
 }
 
-div.themememachine {
-    transform: translateX(300px), translateY(500px);
-    /* position: fixed; */
-    /* bottom: 0; */
-    right: 1px;
-    width: 300;
-    height: 500px;
+#twitch-stream .w3-button {
+  margin: 4px 0;
 }
 
+#twitch-stream .w3-small,
+#twitch-stream .w3-small a {
+  color: #ddd0e8;
+}
 
-/* This is the style sheet */
+#twitch-embed-mount {
+  margin: 12px auto 0;
+  max-width: 100%;
+}
