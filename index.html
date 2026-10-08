@@ -26,26 +26,26 @@
       </ul>
     </nav>
 
-    <div>
-        <h1>Welcome &#128420;</h1>
-        <style>
-            h1 { color: #826c3f; }
-        </style>
-        <p class="p1">I play many games! If you have any games you'd like me to play just tell me!</p>
-    </div>
+    <!-- Banner art already says Welcome — keep it as an image, not a body background -->
+    <img class="mg-banner" src="/bg.png" width="1199" height="480" alt="Welcome to my channel — Meme's Chill Space" />
 
-    <!-- Twitch loads only after a tap — auto-embed crashes Chrome 128 on some Android phones -->
-    <div id="twitch-stream" class="w3-container w3-padding">
-        <p>
-            <button type="button" id="loadTwitch" class="w3-button w3-purple w3-round">
-                Load live stream
-            </button>
-        </p>
-        <p class="w3-small">
-            Or open Twitch in the app:
-            <a href="https://www.twitch.tv/inkymunchie">twitch.tv/inkymunchie</a>
-        </p>
-    </div>
+    <main class="mg-main">
+        <p class="mg-tagline">I play many games! If you have any games you'd like me to play just tell me!</p>
+
+        <!-- Twitch loads only after a tap — auto-embed crashes Chrome 128 on some Android phones -->
+        <div id="twitch-stream">
+            <p>
+                <button type="button" id="loadTwitch" class="w3-button w3-purple w3-round">
+                    Load live stream
+                </button>
+            </p>
+            <p class="w3-small">
+                Or open Twitch in the app:
+                <a href="https://www.twitch.tv/inkymunchie">twitch.tv/inkymunchie</a>
+            </p>
+        </div>
+    </main>
+
     <script type="text/javascript">
         (function () {
             var btn = document.getElementById("loadTwitch");
