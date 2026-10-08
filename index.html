@@ -14,53 +14,69 @@
     <link rel="icon" type="image/x-icon" href="https://static-cdn.jtvnw.net/jtv_user_pictures/e8edde98-0f7e-4409-bbc2-cb0486f4799a-profile_image-70x70.png" />
 </head>
 <body>
+    <div class="w3-bar w3-blue">
+        <a href="/" class="w3-bar-item w3-button w3-mobile w3-green">Home</a>
+        <a href="/help/" class="w3-bar-item w3-button w3-mobile">Remote Help</a>
+        <a href="https://discord.gg/za5Jxb73zG" class="w3-bar-item w3-button w3-mobile">Discord</a>
+        <a href="https://www.twitch.tv/inkymunchie" class="w3-bar-item w3-button w3-mobile">Twitch</a>
+        <a href="https://www.youtube.com/@inkymunchie" class="w3-bar-item w3-button w3-mobile">YouTube</a>
+        <a href="https://www.tiktok.com/@inkymunchiettv" class="w3-bar-item w3-button w3-mobile">TikTok</a>
+    </div>
 
-<!-- Main site navbar (pink = Jessica / Memegames) -->
-<div class="w3-top">
-  <div class="w3-bar w3-pink w3-card">
-    <a href="/" class="w3-bar-item w3-button w3-mobile w3-hover-white">Home</a>
-    <a href="/help/" class="w3-bar-item w3-button w3-mobile w3-hover-white">Remote Help</a>
-    <a href="https://discord.gg/za5Jxb73zG" class="w3-bar-item w3-button w3-mobile w3-hover-white">Discord</a>
-    <a href="https://www.twitch.tv/inkymunchie" class="w3-bar-item w3-button w3-mobile w3-hover-white">Twitch</a>
-    <a href="https://www.youtube.com/@inkymunchie" class="w3-bar-item w3-button w3-mobile w3-hide-small w3-hover-white">YouTube</a>
-    <a href="https://www.tiktok.com/@inkymunchiettv" class="w3-bar-item w3-button w3-mobile w3-hide-small w3-hover-white">TikTok</a>
-    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="navToggle()">&#9776;</a>
-  </div>
-  <div id="navSmall" class="w3-bar-block w3-pink w3-hide w3-hide-large w3-hide-medium">
-    <a href="https://www.youtube.com/@inkymunchie" class="w3-bar-item w3-button" onclick="navToggle()">YouTube</a>
-    <a href="https://www.tiktok.com/@inkymunchiettv" class="w3-bar-item w3-button" onclick="navToggle()">TikTok</a>
-  </div>
-</div>
+    <div>
+        <h1>Welcome &#128420;</h1>
+        <style>
+            h1 { color: #826c3f; }
+        </style>
+        <p class="p1">I play many games! If you have any games you'd like me to play just tell me!</p>
+    </div>
 
-<div class="w3-container" style="margin-top:52px">
-    <h1>Welcome &#128420;</h1>
-    <style>
-        h1 { color: #826c3f; }
-    </style>
-    <p class="p1">I play many games! If you have any games you'd like me to play just tell me!</p>
-</div>
-
-<div id="twitch-stream" class="w3-container"></div>
-<script src="https://embed.twitch.tv/embed/v1.js"></script>
-<script type="text/javascript">
-    function navToggle() {
-      var x = document.getElementById("navSmall");
-      if (x.className.indexOf("w3-show") == -1) {
-        x.className += " w3-show";
-      } else {
-        x.className = x.className.replace(" w3-show", "");
-      }
-    }
-    var options = {
-        width: 720,
-        height: 800,
-        channel: "inkymunchie",
-        allowfullscreen: true,
-        layout: "video-with-chat",
-        muted: false,
-        parent: ["memegames.net", "www.memegames.net"]
-    };
-    var player = new Twitch.Embed("twitch-stream", options);
-</script>
+    <!-- Twitch is loaded only after a tap — auto-embed crashes Chrome 128 on some Android phones -->
+    <div id="twitch-stream" class="w3-container w3-padding">
+        <p>
+            <button type="button" id="loadTwitch" class="w3-button w3-purple w3-round">
+                Load live stream
+            </button>
+        </p>
+        <p class="w3-small">
+            Or open Twitch in the app:
+            <a href="https://www.twitch.tv/inkymunchie">twitch.tv/inkymunchie</a>
+        </p>
+    </div>
+    <script type="text/javascript">
+        (function () {
+            var btn = document.getElementById("loadTwitch");
+            if (!btn) return;
+            btn.addEventListener("click", function () {
+                btn.disabled = true;
+                btn.textContent = "Loading…";
+                var s = document.createElement("script");
+                s.src = "https://embed.twitch.tv/embed/v1.js";
+                s.onload = function () {
+                    var box = document.getElementById("twitch-stream");
+                    box.innerHTML = "";
+                    var mount = document.createElement("div");
+                    mount.id = "twitch-embed-mount";
+                    box.appendChild(mount);
+                    var w = Math.min(window.innerWidth - 24, 720);
+                    new Twitch.Embed("twitch-embed-mount", {
+                        width: w,
+                        height: Math.round(w * 9 / 16) + 120,
+                        channel: "inkymunchie",
+                        allowfullscreen: true,
+                        layout: "video",
+                        muted: true,
+                        parent: ["memegames.net", "www.memegames.net"]
+                    });
+                };
+                s.onerror = function () {
+                    btn.disabled = false;
+                    btn.textContent = "Load live stream";
+                    alert("Could not load Twitch. Try the link instead.");
+                };
+                document.body.appendChild(s);
+            });
+        })();
+    </script>
 </body>
 </html>
