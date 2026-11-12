@@ -32,9 +32,10 @@
     <main class="mg-main">
         <p class="mg-tagline">I play many games! If you have any games you'd like me to play just tell me!</p>
 
-        <!-- Twitch player auto-loads after the page paints (deferred mount).
-             iframe is not in the initial HTML — that was the Chrome 128 crash workaround,
-             kept without requiring a tap. Poster is her channel offline image. -->
+        <!-- Twitch card matches the Welcome banner width. The large character
+             art (channel offline image) is the hero and stays visible unless
+             she is live, when the 16:9 player mounts over it. The iframe is
+             still deferred (Chrome 128) and is not in the initial HTML. -->
         <section class="mg-twitch" aria-label="InkyMunchie on Twitch">
             <header class="mg-twitch-head">
                 <picture>
@@ -48,10 +49,11 @@
             </header>
 
             <div id="twitch-stream" class="mg-twitch-player">
-                <picture>
+                <picture class="mg-twitch-hero">
                     <source type="image/webp" srcset="/inkymunchie-offline.webp">
-                    <img class="mg-twitch-poster" src="/inkymunchie-offline.jpg" width="1920" height="1080" alt="">
+                    <img class="mg-twitch-hero-img" src="/inkymunchie-offline.jpg" width="1920" height="1080" alt="InkyMunchie">
                 </picture>
+                <p id="twitch-status" class="mg-twitch-status" hidden>Offline</p>
             </div>
             <p class="w3-small mg-twitch-alt">
                 Or open Twitch in the app:
@@ -62,10 +64,21 @@
 
     <script type="text/javascript">
         (function () {
-            function mount() {
-                var box = document.getElementById("twitch-stream");
+            var box, statusEl;
+
+            function setOffline() {
+                if (!box) return;
+                box.classList.remove("is-live");
+                box.classList.add("is-offline");
+                if (statusEl) statusEl.hidden = false;
+            }
+
+            function mountLive() {
                 if (!box || box.getAttribute("data-mounted")) return;
                 box.setAttribute("data-mounted", "1");
+                box.classList.remove("is-offline");
+                box.classList.add("is-live");
+                if (statusEl) statusEl.hidden = true;
                 var iframe = document.createElement("iframe");
                 iframe.className = "mg-twitch-iframe";
                 iframe.src = "https://player.twitch.tv/?channel=inkymunchie&parent=memegames.net&parent=www.memegames.net&muted=true&autoplay=true";
@@ -73,31 +86,70 @@
                 iframe.setAttribute("allow", "autoplay; fullscreen");
                 iframe.setAttribute("scrolling", "no");
                 iframe.setAttribute("frameborder", "0");
-                iframe.setAttribute("title", "InkyMunchie on Twitch");
-                iframe.addEventListener("error", function () {
-                    /* poster stays visible behind a failed embed */
-                });
+                iframe.setAttribute("title", "InkyMunchie live on Twitch");
                 box.appendChild(iframe);
             }
-            function start() {
-                var box = document.getElementById("twitch-stream");
-                if (!box) return;
-                if ("IntersectionObserver" in window) {
-                    var io = new IntersectionObserver(function (entries) {
-                        var i;
-                        for (i = 0; i < entries.length; i++) {
-                            if (entries[i].isIntersecting) {
-                                io.disconnect();
-                                mount();
-                                break;
-                            }
-                        }
-                    }, { rootMargin: "120px" });
-                    io.observe(box);
-                } else {
-                    mount();
-                }
+
+            function isLiveText(t) {
+                t = String(t || "").replace(/^\uFEFF/, "").trim();
+                if (!t) return false;
+                if (/offline/i.test(t)) return false;
+                if (/error|not (found|exist)|invalid/i.test(t)) return false;
+                return true;
             }
+
+            function checkLive(done) {
+                var finished = false;
+                function finish(live) {
+                    if (finished) return;
+                    finished = true;
+                    done(live);
+                }
+                var timer = setTimeout(function () { finish(false); }, 4000);
+                if (!window.fetch) {
+                    clearTimeout(timer);
+                    finish(false);
+                    return;
+                }
+                fetch("https://decapi.me/twitch/uptime/inkymunchie")
+                    .then(function (r) { return r.text(); })
+                    .then(function (t) {
+                        clearTimeout(timer);
+                        finish(isLiveText(t));
+                    })
+                    .catch(function () {
+                        clearTimeout(timer);
+                        finish(false);
+                    });
+            }
+
+            function start() {
+                box = document.getElementById("twitch-stream");
+                statusEl = document.getElementById("twitch-status");
+                if (!box) return;
+                checkLive(function (live) {
+                    if (!live) {
+                        setOffline();
+                        return;
+                    }
+                    if ("IntersectionObserver" in window) {
+                        var io = new IntersectionObserver(function (entries) {
+                            var i;
+                            for (i = 0; i < entries.length; i++) {
+                                if (entries[i].isIntersecting) {
+                                    io.disconnect();
+                                    mountLive();
+                                    break;
+                                }
+                            }
+                        }, { rootMargin: "120px" });
+                        io.observe(box);
+                    } else {
+                        mountLive();
+                    }
+                });
+            }
+
             if (document.readyState === "complete") start();
             else window.addEventListener("load", start);
         })();
