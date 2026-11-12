@@ -22,7 +22,9 @@ html, body {
 }
 
 /* Hidden by default. Shown only when each gutter is wide enough
-   (~180px at 1560) to hold the figure with an 8px gap to the column. */
+   (~180px at 1560) to hold the figure with an 8px gap to the column.
+   Scale by height (and the gutter width cap) at the image's native
+   ratio — never set a conflicting width+height that would squash her. */
 .mg-gutter-fig {
   display: none;
   pointer-events: none;
@@ -33,10 +35,11 @@ html, body {
   .mg-gutter-fig {
     display: block;
     position: absolute;
-    top: 0;
-    height: 100%;
-    width: calc((100% - 1199px) / 2 - 16px);
-    max-width: 380px;
+    top: 50%;
+    width: auto;
+    height: auto;
+    max-height: calc(100% - 16px);
+    max-width: calc((100% - 1199px) / 2 - 16px);
     object-fit: contain;
     object-position: center;
     z-index: 0;
@@ -44,11 +47,12 @@ html, body {
   .mg-gutter-fig-left {
     right: calc(50% + 599.5px + 8px);
     left: auto;
+    transform: translateY(-50%);
   }
   .mg-gutter-fig-right {
     left: calc(50% + 599.5px + 8px);
     right: auto;
-    transform: scaleX(-1);
+    transform: translateY(-50%) scaleX(-1);
   }
 }
 
@@ -109,8 +113,8 @@ html, body {
 
 /* Header strip + player/hero are one unit: identical width, no gap or
    seam, aligned edges, matching square corners (same as the Welcome
-   banner). Header height is a share of the card width so it reads as
-   a cap, not a tacked-on bar. */
+   banner). Header uses the lily banner's native 4:1 ratio so the art
+   is not cropped or stretched. */
 .mg-twitch-card {
   display: flex;
   flex-direction: column;
@@ -132,13 +136,16 @@ html, body {
   gap: 12px;
   margin: 0;
   padding: 12px 14px;
-  min-height: clamp(88px, 16cqw, 200px);
+  aspect-ratio: 4 / 1;
+  height: auto;
+  min-height: 80px;
   border: 0;
   text-align: left;
   background-color: #14040c;
   background-image: url("/inkymunchie-banner.webp"), url("/inkymunchie-banner.png");
-  background-size: cover;
+  background-size: 100% 100%;
   background-position: center;
+  background-repeat: no-repeat;
   box-sizing: border-box;
   overflow: hidden;
   flex: 0 0 auto;
