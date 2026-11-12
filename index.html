@@ -26,6 +26,13 @@
       </ul>
     </nav>
 
+    <div class="mg-page">
+    <!-- Cutout of her character only, in the page gutters. Hidden when the
+         gutters are too narrow to hold the figure without overlapping the
+         1199px center column. The right side is a horizontal mirror. -->
+    <img class="mg-gutter-fig mg-gutter-fig-left" src="/inkymunchie-figure.webp" width="735" height="955" alt="" decoding="async" aria-hidden="true">
+    <img class="mg-gutter-fig mg-gutter-fig-right" src="/inkymunchie-figure.webp" width="735" height="955" alt="" decoding="async" aria-hidden="true">
+
     <!-- Banner art already says Welcome — keep it as an image, not a body background -->
     <img class="mg-banner" src="/bg.png" width="1199" height="480" alt="Welcome to my channel — Meme's Chill Space" />
 
@@ -37,6 +44,7 @@
              she is live, when the 16:9 player mounts over it. The iframe is
              still deferred (Chrome 128) and is not in the initial HTML. -->
         <section class="mg-twitch" aria-label="InkyMunchie on Twitch">
+            <div class="mg-twitch-card">
             <header class="mg-twitch-head">
                 <picture>
                     <source type="image/webp" srcset="/inkymunchie-avatar.webp">
@@ -55,12 +63,14 @@
                 </picture>
                 <p id="twitch-status" class="mg-twitch-status" hidden>Offline</p>
             </div>
+            </div>
             <p class="w3-small mg-twitch-alt">
                 Or open Twitch in the app:
                 <a href="https://www.twitch.tv/inkymunchie">twitch.tv/inkymunchie</a>
             </p>
         </section>
     </main>
+    </div>
 
     <script type="text/javascript">
         (function () {
