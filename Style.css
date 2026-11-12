@@ -53,3 +53,154 @@ html, body {
   margin: 12px auto 0;
   max-width: 100%;
 }
+
+/* InkyMunchie Twitch section — channel banner header, avatar + name, 16:9 player.
+   Sized to stay inside .mg-main on desktop and phone; no extra scrollbars. */
+.mg-twitch {
+  margin-top: 8px;
+  max-width: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #14040c;
+  box-sizing: border-box;
+}
+
+.mg-twitch-head {
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 14px;
+  min-height: 72px;
+  text-align: left;
+  background-color: #2a0810;
+  background-image: url("/inkymunchie-banner.webp"), url("/inkymunchie-banner.png");
+  background-size: cover;
+  background-position: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.mg-twitch-head::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to right,
+    rgba(20, 4, 10, 0.66) 0%,
+    rgba(20, 4, 10, 0.32) 55%,
+    rgba(20, 4, 10, 0.16) 100%
+  );
+  pointer-events: none;
+}
+
+.mg-twitch-avatar {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 56px;
+  height: 56px;
+  flex: 0 0 56px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  object-fit: cover;
+  background: #1a0a12;
+}
+
+.mg-twitch-id {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.mg-twitch-name {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.75);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mg-twitch-handle {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.85rem;
+  color: #f3d0e6;
+  text-decoration: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.75);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mg-twitch-handle:hover,
+.mg-twitch-handle:focus {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.mg-twitch-player {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+}
+
+.mg-twitch-player picture {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.mg-twitch-poster,
+.mg-twitch-iframe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+.mg-twitch-poster {
+  object-fit: cover;
+}
+
+.mg-twitch-alt,
+.mg-twitch-alt a {
+  color: #ddd0e8;
+}
+
+.mg-twitch-alt {
+  margin: 10px 12px 12px;
+}
+
+@media (min-width: 600px) {
+  .mg-twitch-head {
+    padding: 16px 18px;
+    min-height: 88px;
+  }
+  .mg-twitch-avatar {
+    width: 72px;
+    height: 72px;
+    flex-basis: 72px;
+  }
+  .mg-twitch-name {
+    font-size: 1.35rem;
+  }
+}
