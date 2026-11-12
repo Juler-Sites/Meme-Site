@@ -32,53 +32,74 @@
     <main class="mg-main">
         <p class="mg-tagline">I play many games! If you have any games you'd like me to play just tell me!</p>
 
-        <!-- Twitch loads only after a tap — auto-embed crashes Chrome 128 on some Android phones -->
-        <div id="twitch-stream">
-            <p>
-                <button type="button" id="loadTwitch" class="w3-button w3-purple w3-round">
-                    Load live stream
-                </button>
-            </p>
-            <p class="w3-small">
+        <!-- Twitch player auto-loads after the page paints (deferred mount).
+             iframe is not in the initial HTML — that was the Chrome 128 crash workaround,
+             kept without requiring a tap. Poster is her channel offline image. -->
+        <section class="mg-twitch" aria-label="InkyMunchie on Twitch">
+            <header class="mg-twitch-head">
+                <picture>
+                    <source type="image/webp" srcset="/inkymunchie-avatar.webp">
+                    <img class="mg-twitch-avatar" src="/inkymunchie-avatar.png" width="72" height="72" alt="InkyMunchie">
+                </picture>
+                <div class="mg-twitch-id">
+                    <p class="mg-twitch-name">InkyMunchie</p>
+                    <a class="mg-twitch-handle" href="https://www.twitch.tv/inkymunchie">twitch.tv/inkymunchie</a>
+                </div>
+            </header>
+
+            <div id="twitch-stream" class="mg-twitch-player">
+                <picture>
+                    <source type="image/webp" srcset="/inkymunchie-offline.webp">
+                    <img class="mg-twitch-poster" src="/inkymunchie-offline.jpg" width="1920" height="1080" alt="">
+                </picture>
+            </div>
+            <p class="w3-small mg-twitch-alt">
                 Or open Twitch in the app:
                 <a href="https://www.twitch.tv/inkymunchie">twitch.tv/inkymunchie</a>
             </p>
-        </div>
+        </section>
     </main>
 
     <script type="text/javascript">
         (function () {
-            var btn = document.getElementById("loadTwitch");
-            if (!btn) return;
-            btn.addEventListener("click", function () {
-                btn.disabled = true;
-                btn.textContent = "Loading…";
-                var s = document.createElement("script");
-                s.src = "https://embed.twitch.tv/embed/v1.js";
-                s.onload = function () {
-                    var box = document.getElementById("twitch-stream");
-                    box.innerHTML = "";
-                    var mount = document.createElement("div");
-                    mount.id = "twitch-embed-mount";
-                    box.appendChild(mount);
-                    var w = Math.min(window.innerWidth - 24, 720);
-                    new Twitch.Embed("twitch-embed-mount", {
-                        width: w,
-                        height: Math.round(w * 9 / 16) + 120,
-                        channel: "inkymunchie",
-                        allowfullscreen: true,
-                        layout: "video",
-                        muted: true,
-                        parent: ["memegames.net", "www.memegames.net"]
-                    });
-                };
-                s.onerror = function () {
-                    btn.disabled = false;
-                    btn.textContent = "Load live stream";
-                    alert("Could not load Twitch. Try the link instead.");
-                };
-                document.body.appendChild(s);
-            });
+            function mount() {
+                var box = document.getElementById("twitch-stream");
+                if (!box || box.getAttribute("data-mounted")) return;
+                box.setAttribute("data-mounted", "1");
+                var iframe = document.createElement("iframe");
+                iframe.className = "mg-twitch-iframe";
+                iframe.src = "https://player.twitch.tv/?channel=inkymunchie&parent=memegames.net&parent=www.memegames.net&muted=true&autoplay=true";
+                iframe.setAttribute("allowfullscreen", "");
+                iframe.setAttribute("allow", "autoplay; fullscreen");
+                iframe.setAttribute("scrolling", "no");
+                iframe.setAttribute("frameborder", "0");
+                iframe.setAttribute("title", "InkyMunchie on Twitch");
+                iframe.addEventListener("error", function () {
+                    /* poster stays visible behind a failed embed */
+                });
+                box.appendChild(iframe);
+            }
+            function start() {
+                var box = document.getElementById("twitch-stream");
+                if (!box) return;
+                if ("IntersectionObserver" in window) {
+                    var io = new IntersectionObserver(function (entries) {
+                        var i;
+                        for (i = 0; i < entries.length; i++) {
+                            if (entries[i].isIntersecting) {
+                                io.disconnect();
+                                mount();
+                                break;
+                            }
+                        }
+                    }, { rootMargin: "120px" });
+                    io.observe(box);
+                } else {
+                    mount();
+                }
+            }
+            if (document.readyState === "complete") start();
+            else window.addEventListener("load", start);
         })();
     </script>
 </body>
