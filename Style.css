@@ -11,6 +11,47 @@ html, body {
   font-family: Arial, Verdana, sans-serif;
 }
 
+/* Banner + main share one relatively-positioned wrapper so the
+   character cutouts can stand in the left/right gutters without
+   overlapping the 1199px center column. */
+.mg-page {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* Hidden by default. Shown only when each gutter is wide enough
+   (~180px at 1560) to hold the figure with an 8px gap to the column. */
+.mg-gutter-fig {
+  display: none;
+  pointer-events: none;
+  user-select: none;
+}
+
+@media (min-width: 1560px) {
+  .mg-gutter-fig {
+    display: block;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: calc((100% - 1199px) / 2 - 16px);
+    max-width: 380px;
+    object-fit: contain;
+    object-position: center;
+    z-index: 0;
+  }
+  .mg-gutter-fig-left {
+    right: calc(50% + 599.5px + 8px);
+    left: auto;
+  }
+  .mg-gutter-fig-right {
+    left: calc(50% + 599.5px + 8px);
+    right: auto;
+    transform: scaleX(-1);
+  }
+}
+
 .mg-banner {
   display: block;
   width: 100%;
@@ -63,6 +104,19 @@ html, body {
 .mg-twitch {
   margin-top: 0;
   max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Header strip + player/hero are one unit: identical width, no gap or
+   seam, aligned edges, matching square corners (same as the Welcome
+   banner). Header height is a share of the card width so it reads as
+   a cap, not a tacked-on bar. */
+.mg-twitch-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   overflow: hidden;
   border-radius: 0;
   background: #14040c;
@@ -76,15 +130,18 @@ html, body {
   flex-wrap: nowrap;
   align-items: center;
   gap: 12px;
+  margin: 0;
   padding: 12px 14px;
-  min-height: clamp(72px, 12.35cqw, 150px);
+  min-height: clamp(88px, 16cqw, 200px);
+  border: 0;
   text-align: left;
-  background-color: #2a0810;
+  background-color: #14040c;
   background-image: url("/inkymunchie-banner.webp"), url("/inkymunchie-banner.png");
   background-size: cover;
   background-position: center;
   box-sizing: border-box;
   overflow: hidden;
+  flex: 0 0 auto;
 }
 
 .mg-twitch-head::before {
@@ -156,11 +213,14 @@ html, body {
 .mg-twitch-player {
   position: relative;
   width: 100%;
-  max-width: 1920px; /* never upscale the 1920x1080 art past native */
-  margin: 0 auto;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
   aspect-ratio: 16 / 9;
-  background: #000;
+  background: #14040c;
   overflow: hidden;
+  flex: 0 0 auto;
 }
 
 .mg-twitch-hero {
