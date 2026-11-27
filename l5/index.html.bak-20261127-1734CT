@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>L5 Coax</title>
+  <meta name="description" content="L5 Coax is a Discord AI bot and control room built and run by Julian Robbins, AI-assisted." />
+  <link rel="canonical" href="https://memegames.net/l5/" />
+  <meta property="og:title" content="L5 Coax" />
+  <meta property="og:description" content="A Discord AI bot and control room built and run by Julian Robbins, AI-assisted." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://memegames.net/l5/" />
+  <meta property="og:image" content="https://memegames.net/l5/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="627" />
+  <meta property="og:image:alt" content="L5 Coax — a Discord AI bot and control room by Julian Robbins" />
+  <meta property="og:site_name" content="memegames.net" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="L5 Coax" />
+  <meta name="twitter:description" content="A Discord AI bot and control room built and run by Julian Robbins, AI-assisted." />
+  <meta name="twitter:image" content="https://memegames.net/l5/og.png" />
+  <meta name="theme-color" content="#4469af" />
+  <link rel="icon" type="image/png" href="/l5/icon.png" />
+  <link rel="stylesheet" href="/nav.css" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #1a1024;
+      color: #f4eef8;
+      font-family: Arial, Verdana, sans-serif;
+      text-align: center;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .l5-main {
+      flex: 1 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      max-width: 36rem;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 3rem;
+      box-sizing: border-box;
+    }
+    .l5-icon {
+      width: 7rem;
+      height: 7rem;
+      border-radius: 1.25rem;
+      display: block;
+      margin: 0 auto 1.25rem;
+    }
+    h1 {
+      margin: 0 0 0.75rem;
+      font-size: 2.25rem;
+      font-weight: 700;
+    }
+    .l5-lead {
+      margin: 0 0 1.75rem;
+      font-size: 1.15rem;
+      line-height: 1.5;
+      color: #ffb38a;
+      font-weight: 600;
+    }
+    .l5-btn {
+      display: inline-block;
+      padding: 0.75rem 1.35rem;
+      background: #4469af;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      text-decoration: none;
+      border-radius: 6px;
+      border: 1px solid #617fb5;
+    }
+    .l5-btn:hover,
+    .l5-btn:focus {
+      background: #5779bb;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <nav class="mg-nav-wrap" aria-label="Main">
+    <ul class="mg-nav">
+      <li><a href="/">Home</a></li>
+      <li><a href="/help/">Remote Help</a></li>
+      <li><a href="https://discord.gg/za5Jxb73zG">Discord</a></li>
+      <li><a href="https://www.twitch.tv/inkymunchie">Twitch</a></li>
+      <li><a href="https://www.youtube.com/@inkymunchie">YouTube</a></li>
+      <li><a href="https://www.tiktok.com/@inkymunchiettv">TikTok</a></li>
+    </ul>
+  </nav>
+  <main class="l5-main">
+    <img class="l5-icon" src="/l5/icon.png" width="512" height="512" alt="L5 Coax" />
+    <h1>L5 Coax</h1>
+    <p class="l5-lead">A Discord AI bot and control room built and run by Julian Robbins, AI-assisted.</p>
+    <p><a class="l5-btn" href="https://l5.memegames.net/login">Open control room</a></p>
+  </main>
+</body>
+</html>
