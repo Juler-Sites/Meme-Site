@@ -1,105 +1,261 @@
 <!DOCTYPE html>
-<html lang="en-US">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>L5 Coax</title>
-  <meta name="description" content="L5 Coax is a Discord AI bot and control room built and run by Julian Robbins, AI-assisted." />
-  <link rel="canonical" href="https://memegames.net/l5/" />
-  <meta property="og:title" content="L5 Coax" />
-  <meta property="og:description" content="A Discord AI bot and control room built and run by Julian Robbins, AI-assisted." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://memegames.net/l5/" />
-  <meta property="og:image" content="https://memegames.net/l5/og.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="627" />
-  <meta property="og:image:alt" content="L5 Coax — a Discord AI bot and control room by Julian Robbins" />
-  <meta property="og:site_name" content="memegames.net" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="L5 Coax" />
-  <meta name="twitter:description" content="A Discord AI bot and control room built and run by Julian Robbins, AI-assisted." />
-  <meta name="twitter:image" content="https://memegames.net/l5/og.png" />
-  <meta name="theme-color" content="#4469af" />
-  <link rel="icon" type="image/png" href="/l5/icon.png" />
-  <link rel="stylesheet" href="/nav.css" />
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background: #1a1024;
-      color: #f4eef8;
-      font-family: Arial, Verdana, sans-serif;
-      text-align: center;
-    }
-    body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-    .l5-main {
-      flex: 1 0 auto;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      width: 100%;
-      max-width: 36rem;
-      margin: 0 auto;
-      padding: 2.5rem 1.25rem 3rem;
-      box-sizing: border-box;
-    }
-    .l5-icon {
-      width: 7rem;
-      height: 7rem;
-      border-radius: 1.25rem;
-      display: block;
-      margin: 0 auto 1.25rem;
-    }
-    h1 {
-      margin: 0 0 0.75rem;
-      font-size: 2.25rem;
-      font-weight: 700;
-    }
-    .l5-lead {
-      margin: 0 0 1.75rem;
-      font-size: 1.15rem;
-      line-height: 1.5;
-      color: #ffb38a;
-      font-weight: 600;
-    }
-    .l5-btn {
-      display: inline-block;
-      padding: 0.75rem 1.35rem;
-      background: #4469af;
-      color: #fff;
-      font-weight: 700;
-      font-size: 1rem;
-      text-decoration: none;
-      border-radius: 6px;
-      border: 1px solid #617fb5;
-    }
-    .l5-btn:hover,
-    .l5-btn:focus {
-      background: #5779bb;
-      color: #fff;
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>L5 Coax</title>
+<meta name="description" content="L5 Coax is a private Discord companion with a keyed control room. She talks in your servers, runs events and go-live posts, and shuts down obvious scams.">
+<link rel="canonical" href="https://memegames.net/l5/">
+<meta property="og:title" content="L5 Coax">
+<meta property="og:description" content="A private Discord companion with a keyed control room, built and run by Julian Robbins.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://memegames.net/l5/">
+<meta property="og:image" content="https://memegames.net/l5/og.png">
+<meta property="og:site_name" content="memegames.net">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#0b0a0c">
+<link rel="icon" type="image/png" href="assets/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=IM+Fell+English:ital@0;1&display=swap">
+<link rel="stylesheet" href="/nav.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <nav class="mg-nav-wrap" aria-label="Main">
-    <ul class="mg-nav">
-      <li><a href="/">Home</a></li>
-      <li><a href="/help/">Remote Help</a></li>
-      <li><a href="https://discord.gg/za5Jxb73zG">Discord</a></li>
-      <li><a href="https://www.twitch.tv/inkymunchie">Twitch</a></li>
-      <li><a href="https://www.youtube.com/@inkymunchie">YouTube</a></li>
-      <li><a href="https://www.tiktok.com/@inkymunchiettv">TikTok</a></li>
-    </ul>
+<nav class="mg-nav-wrap" aria-label="memegames.net">
+  <ul class="mg-nav">
+    <li><a href="https://memegames.net/">Home</a></li>
+    <li><a href="https://memegames.net/help/">Remote Help</a></li>
+    <li><a href="https://discord.gg/za5Jxb73zG">Discord</a></li>
+    <li><a href="https://www.twitch.tv/inkymunchie">Twitch</a></li>
+    <li><a href="https://www.youtube.com/@inkymunchie">YouTube</a></li>
+    <li><a href="https://www.tiktok.com/@inkymunchiettv">TikTok</a></li>
+  </ul>
+</nav>
+
+<header class="l5nav" id="nav">
+  <a class="brand" href="./"><img src="assets/icon-192.png" width="34" height="34" alt="">L5 <em>Coax</em></a>
+  <nav class="links" aria-label="L5">
+    <a href="#features">Features</a>
+    <a href="#commands">Commands</a>
+    <a href="#start">Getting started</a>
+    <a href="https://l5.memegames.net/guide">Guide</a>
   </nav>
-  <main class="l5-main">
-    <img class="l5-icon" src="/l5/icon.png" width="512" height="512" alt="L5 Coax" />
-    <h1>L5 Coax</h1>
-    <p class="l5-lead">A Discord AI bot and control room built and run by Julian Robbins, AI-assisted.</p>
-    <p><a class="l5-btn" href="https://l5.memegames.net/login">Open control room</a></p>
-  </main>
+  <div class="end">
+    <a class="btn" href="https://l5.memegames.net/login">Request access</a>
+    <a class="btn primary" href="https://l5.memegames.net/login">Open control room</a>
+  </div>
+  <button class="menu" type="button" aria-expanded="false" aria-controls="nav" aria-label="Menu">☰</button>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow">Private Discord companion</p>
+      <h1>A bot with a real <em>control room</em> — and a door that stays closed.</h1>
+      <p class="lede">L5 Coax talks in your servers and DMs, runs events and go-live posts, and shuts down obvious scams. She is not listed for public invite. Julian approves every panel key.</p>
+      <div class="acts">
+        <a class="btn primary lg" href="https://l5.memegames.net/login">Open control room</a>
+        <a class="btn lg" href="https://l5.memegames.net/login">Request access</a>
+      </div>
+      <ul class="trust">
+        <li>Private bot</li>
+        <li>Keyed panel</li>
+        <li>Owner-operated</li>
+      </ul>
+    </div>
+    <div class="shot" aria-hidden="false">
+      <div class="bar"><i></i><i></i><i></i><span>l5.memegames.net/login</span></div>
+      <img src="assets/login-shot.png" width="1100" height="800" alt="The L5 Coax control room sign-in page, with fields for a name and a panel key, plus Request access.">
+    </div>
+  </div>
+</section>
+
+<section id="features">
+  <div class="wrap">
+    <p class="sec-kicker">What she does</p>
+    <h2 class="sec-title">Everything the room needs, without a public listing.</h2>
+    <p class="sec-lead">These are the features that actually ship in L5 today — from the bot itself and the official guide. Nothing here is a promise of a public bot or of numbers we don’t publish.</p>
+    <div class="grid3">
+      <article class="card">
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.4-4 8-9 8l-4 2v-3.1A8.2 8.2 0 0 1 3 12c0-4.4 4-8 9-8s9 3.6 9 8z"/></svg></div>
+        <h3>Chat, in character</h3>
+        <p>Mention her or DM her and she answers. Moods — Default, Chill, Chaotic, Sleepy, Hype, or Sassy — change how she talks. In the panel, a live feed lets you reply as L5.</p>
+      </article>
+      <article class="card">
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M7 8h10M7 12h6"/></svg></div>
+        <h3>A keyed control room</h3>
+        <p>Status, features, scheduled posts, and logs live in a signed-in dashboard. You get in with a key Julian issues, or by requesting one from the sign-in page.</p>
+      </article>
+      <article class="card">
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></div>
+        <h3>Events &amp; reminders</h3>
+        <p>Mods can type <span class="k">!event 10/31 7pm …</span> or “remind everyone friday 7pm…”. She posts at that time and can ping an opt-in Events role. Anyone can list them with <span class="k">!events</span>.</p>
+      </article>
+      <article class="card">
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 18v-7l7-4 7 4v7"/><path d="M9 18v-5h6v5"/></svg></div>
+        <h3>Go-live posts</h3>
+        <p>When a configured Twitch stream starts, she posts once in the channel you pick and pings people who opted in. A drop and reconnect does not send a second announcement.</p>
+      </article>
+      <article class="card">
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3l8 4v5c0 5-3.5 8.5-8 9-4.5-.5-8-4-8-9V7l8-4z"/></svg></div>
+        <h3>Spam cleanup &amp; shield</h3>
+        <p>She deletes obvious fake Nitro/Steam gift links, unauthorized @everyone-with-a-link, and the same message blasted across channels, then times the sender out. A separate anti-raid shield watches for mass bans, channel deletes, and bot raids.</p>
+      </article>
+      <article class="card">
+        <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 9h8M8 13h5"/><path d="M4 6h16v12H8l-4 3V6z"/></svg></div>
+        <h3>Room tools</h3>
+        <p>Custom command triggers, reaction roles, welcome messages, and scheduled or repeating posts — all from the Features tab in the control room.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap split">
+    <div class="copy">
+      <p class="sec-kicker">Control room</p>
+      <h2 class="sec-title">Change the room without living in Discord settings.</h2>
+      <p class="sec-lead" style="margin-bottom:0">The panel is the same one operators already use: moods, a live chat feed, events, go-live, and safety tools. Sign-in is a key, not a public dashboard. If you don’t have one, Request access and Julian decides.</p>
+    </div>
+    <div class="visual" aria-hidden="true">
+      <div class="mock side">
+        <nav>
+          <div class="on">Home</div>
+          <div>Features</div>
+          <div>Fun</div>
+          <div>Events</div>
+          <div>Look</div>
+          <div>Safety</div>
+        </nav>
+        <div class="pane">
+          <div class="mock-top"><b>Home</b><span class="pill">panel</span></div>
+          <div class="row"><span>Mood</span><b>Default</b></div>
+          <div class="row"><span>Go-live</span><b>Twitch opt-in</b></div>
+          <div class="row"><span>Events</span><b>Reminders</b></div>
+          <div class="row"><span>Cleanup</span><b>Scam filter</b></div>
+          <p style="margin:14px 0 0;color:var(--mut);font-size:12px">Illustrative layout of the signed-in control room. Not a live session.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap split reverse">
+    <div class="copy">
+      <p class="sec-kicker">In the server</p>
+      <h2 class="sec-title">She answers, reminds, and keeps the floor clear.</h2>
+      <p class="sec-lead" style="margin-bottom:0">Talk to her in a channel or a DM. Schedule a stream night in plain language. If someone posts the usual fake-gift scam, she handles it and writes it down in the mod log — without touching admins or mods.</p>
+    </div>
+    <div class="visual">
+      <div class="mock">
+        <div class="bubble"><small>in the server</small>remind everyone friday 7pm stream</div>
+        <div class="bubble me"><small>L5</small>ok, I’ll post it Friday at 7pm Central and ping Event pings. Cancel with <span class="k">!cancelevent</span>.</div>
+        <div class="ev"><div class="d">Fri<b>7pm</b></div><div><b>stream</b><div style="color:var(--mut)">Posted to the events channel · opt-in ping</div></div></div>
+        <div class="log"><b>Cleanup (example)</b> — fake gift link removed, sender timed out 10 minutes. Admins and mods are never touched.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="commands">
+  <div class="wrap">
+    <p class="sec-kicker">Commands</p>
+    <h2 class="sec-title">The prefix is <em style="font-family:'IM Fell English',Georgia,serif;font-style:italic;font-weight:400">!</em> — plus a couple of slash commands.</h2>
+    <p class="sec-lead">This list is taken from L5’s own <span class="k">!help</span> and the official guide. Custom triggers you add in the panel show up at the bottom of <span class="k">!help</span> on that server.</p>
+    <div class="cmds">
+      <div class="cmd"><span class="k">!help</span><p>Lists built-in commands, plus any custom ones on that server.</p></div>
+      <div class="cmd"><span class="k">!roll 2d6</span><p>Dice. Default is 1d6; up to 20 dice.</p></div>
+      <div class="cmd"><span class="k">!coin</span><p>Heads or tails.</p></div>
+      <div class="cmd"><span class="k">!8ball</span><p>A classic magic-8-ball reply.</p></div>
+      <div class="cmd"><span class="k">!pick a, b, c</span><p>Chooses one option.</p></div>
+      <div class="cmd"><span class="k">!poll q | a | b</span><p>Posts a poll with reactions. A question alone gets thumbs up/down.</p></div>
+      <div class="cmd"><span class="k">!remind 10m text</span><p>Pings you later (s/m/h/d, up to 7 days).</p></div>
+      <div class="cmd"><span class="k">!avatar @user</span><p>Shows that user’s avatar, or yours.</p></div>
+      <div class="cmd"><span class="k">!userinfo @user</span><p>Join date and roles.</p></div>
+      <div class="cmd"><span class="k">!serverinfo</span><p>Member, channel, and role counts.</p></div>
+      <div class="cmd"><span class="k">!purge 10</span><p>Deletes recent messages. <span class="who">Mods only (Manage Messages)</span></p></div>
+      <div class="cmd"><span class="k">!events</span><p>Lists upcoming events. <span class="who">Anyone</span></p></div>
+      <div class="cmd"><span class="k">!event 10/31 7pm …</span><p>Schedules a post. “remind everyone friday 7pm…” also works. <span class="who">Mods only</span></p></div>
+      <div class="cmd"><span class="k">!cancelevent code</span><p>Cancels one, using the code L5 gave you. <span class="who">Mods only</span></p></div>
+      <div class="cmd"><span class="k">!requestlogin</span><p>Asks Julian for a panel key. Also available as <span class="k">/requestlogin</span>.</p></div>
+      <div class="cmd"><span class="k">!l5help</span><p>DMs you the panel and guide links. Also <span class="k">!panel</span> and <span class="k">!guide</span>.</p></div>
+    </div>
+    <p class="cmd-note"><span class="k">/privacy</span> is a short, in-Discord note on how L5 treats chats.</p>
+  </div>
+</section>
+
+<section id="start">
+  <div class="wrap">
+    <p class="sec-kicker">Getting started</p>
+    <h2 class="sec-title">Three steps. No public invite button.</h2>
+    <div class="steps">
+      <div class="step">
+        <b>01</b>
+        <h3>Ask for a key</h3>
+        <p>If she is already in a server you share, type <span class="k">!requestlogin</span>. Otherwise open Request access on the sign-in page and include your Discord user ID.</p>
+      </div>
+      <div class="step">
+        <b>02</b>
+        <h3>Wait for the DM</h3>
+        <p>Julian reviews the request. If he approves it, the panel key is sent in a Discord DM. It is never shown in the browser.</p>
+      </div>
+      <div class="step">
+        <b>03</b>
+        <h3>Sign in</h3>
+        <p>Open the control room and sign in, or type <span class="k">!help</span> in a server she is in. The <a href="https://l5.memegames.net/guide">guide</a> walks through the panel in plain language.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <div class="band-inner">
+    <h2>This door stays closed until you are invited in.</h2>
+    <p>L5 is a private bot. There is no “Add to server” link. Request access, or sign in if you already have a key.</p>
+    <div class="acts" style="justify-content:center">
+      <a class="btn primary lg" href="https://l5.memegames.net/login">Open control room</a>
+      <a class="btn lg" href="https://l5.memegames.net/login">Request access</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="foot">
+    <div>
+      <a class="brand" href="./"><img src="assets/icon-192.png" width="34" height="34" alt="">L5 <em>Coax</em></a>
+      <p class="about">A private Discord companion and control room, built and run by Julian (Lightsnipe).</p>
+    </div>
+    <div>
+      <h3>Product</h3>
+      <a href="#features">Features</a>
+      <a href="#commands">Commands</a>
+      <a href="https://l5.memegames.net/guide">Guide</a>
+      <a href="https://l5.memegames.net/login">Control room</a>
+    </div>
+    <div>
+      <h3>Legal</h3>
+      <a href="https://l5.memegames.net/privacy">Privacy Policy</a>
+      <a href="https://l5.memegames.net/tos">Terms of Service</a>
+    </div>
+    <div>
+      <h3>memegames.net</h3>
+      <a href="https://memegames.net/">Home</a>
+      <a href="https://memegames.net/help/">Remote Help</a>
+      <a href="https://overlord.memegames.net/">Overlord’s Gatekeeper</a>
+    </div>
+  </div>
+  <div class="legal">L5 Coax is not a public Discord bot. Panel keys are issued by the operator. Layout and copy on this page describe shipped features only.</div>
+</footer>
+<script>
+(function(){
+  var n=document.getElementById("nav"), b=n.querySelector(".menu");
+  b.addEventListener("click", function(){
+    var on=n.classList.toggle("open");
+    b.setAttribute("aria-expanded", on ? "true" : "false");
+  });
+})();
+</script>
 </body>
 </html>
